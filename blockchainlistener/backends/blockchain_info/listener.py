@@ -18,10 +18,12 @@ class Listener(object):
 			rs=self.bci.make_request("https://blockchain.info/block-height/%d?format=json" % (previous))
 			blockrs=json.loads(rs)
 			yield blockrs['blocks']
+			previous+=1
 	
 	def stream_blocks(self,previous=0,sleep=60*5):
-		for b in self.query_blocks(previous):
-			yield b
-			time.sleep(sleep)
+		for bl in self.query_blocks(previous):
+			for b in bl:
+				yield b
+		time.sleep(sleep)
 			
 		

@@ -14,5 +14,6 @@ setup(name='blockchainlistener',
       author_email='Steve132@github.com',
       url='https://github.com/Steve132/blockchainlistener',
       packages=P,
+      package_data={'blockchainlistener.backends.blockchain_info':['cacert.pem']},
       requires=['pybitcointools']
      )
